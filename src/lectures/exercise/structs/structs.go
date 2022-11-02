@@ -19,6 +19,40 @@ package main
 
 import "fmt"
 
+type Coordinate struct {
+	x, y int
+}
+
+type Rectangle struct {
+	a Coordinate
+	b Coordinate
+}
+
+func length(rectAngle Rectangle) int {
+	return (rectAngle.a.y - rectAngle.b.y)
+}
+func width(rectAngle Rectangle) int {
+	return (rectAngle.b.x - rectAngle.a.x)
+}
+func calcArea(rectAngle Rectangle) int {
+	return length(rectAngle) * width(rectAngle)
+}
+func calcPerimeter(rectAngle Rectangle) int {
+	return (length(rectAngle) * 2) + (width(rectAngle) * 2)
+}
+
+func printInfo(rectAngle Rectangle) {
+	fmt.Println("Rectangle", rectAngle)
+	fmt.Println("Area :", calcArea(rectAngle))
+	fmt.Println("Perimeter :", calcPerimeter(rectAngle))
+}
+
 func main() {
+	rectAngle := Rectangle{a: Coordinate{0, 7}, b: Coordinate{10, 0}}
+	printInfo(rectAngle)
+
+	rectAngle.a.y *= 2
+	rectAngle.b.x *= 2
+	printInfo(rectAngle)
 
 }
