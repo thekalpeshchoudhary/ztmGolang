@@ -18,5 +18,34 @@ import "fmt"
 
 type Part string
 
+//* Create a function to print out the contents of the assembly line
+func printAssemblyInfo(assemblySlice []Part) {
+	fmt.Println("--- Print Start ---")
+	for i := 0; i < len(assemblySlice); i++ {
+		part := assemblySlice[i]
+		fmt.Println("Assembly Line Part :", part)
+	}
+	fmt.Println("--- Print End ---")
+}
+
 func main() {
+
+	//* Using a slice, create an assembly line that contains type Part
+	//  - Create an assembly line having any three parts
+	assemblySlice := []Part{
+		"Moulder",
+		"Shaper",
+		"Cooler",
+	}
+	printAssemblyInfo(assemblySlice)
+	//  - Print out the contents of the assembly line at each step
+
+	//  - Add two new parts to the line
+	assemblySlice = append(assemblySlice, "Stickering Machine", "Packaging Machine")
+	printAssemblyInfo(assemblySlice)
+
+	//  - Slice the assembly line so it contains only the two new parts
+	assemblySlice = assemblySlice[3:]
+	printAssemblyInfo(assemblySlice)
+
 }
